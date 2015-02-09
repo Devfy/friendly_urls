@@ -26,8 +26,16 @@ El archivo .htaccess contiene los rewrites para funcionar.
 ### Nginx
 
     location / {
-        rewrite ^/([^?]*)(?:\?(.*))? /index.php?url=$1&$2;
-        rewrite ^/ /index.php;
+        if (!-e $request_filename){
+            rewrite ^(.*)$ /index.php?url=$1;
+        }
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
     }
 
 ## Licencia
