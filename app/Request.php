@@ -11,6 +11,8 @@ class Request {
     protected $url;
     protected $view;
     protected $defaultUrl = 'index';
+    protected $directory;
+    protected $urlSegments;
 
     /**
      * Constructor del request con el parametro url.
@@ -46,7 +48,9 @@ class Request {
      */
     public function execute(){
 
-        if(!file_exists($this->getViewName())){
+        if(is_dir("view/".$this->getUrl())){
+            $response = new View($this->url);
+        }else if(!file_exists($this->getViewName())){
             $response = new View('error');
             header("HTTP/1.0 404 Not Found");
             $this->renderView($response);

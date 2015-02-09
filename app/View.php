@@ -22,8 +22,14 @@ class View extends Response{
      * Método para obtener el nombre del archivo de la vista.
      * @return string
      */
-    public function getFileName()
-    {
+    public function getFileName(){
+
+        if(is_dir("view/".$this->view)){
+            return "view/".$this->view."/index.html";
+        }else if(strpos($this->view, "/")){
+            return "view/".$this->view.".html";
+        }
+
         return "view/".$this->view.".html";
     }
 

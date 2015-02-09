@@ -6,6 +6,9 @@ Motor de url's amigables minimalista y sencillo de usar, crea tus vistas en Html
 ###"balloondev.com/contact" -> "view/contact.html"
 Cuando se hace el request a la url, se hace el render del archivo Html con el nombre del segmento de la url "contact" -> "contact.html".
 
+###"balloondev.com/hola/mundo" -> "view/hola/mundo.html"
+También puedes tener subdirectorios, debes incluir el archivo index dentro de cada subdirectorio para que pueda ser accesible ej. "balloondev.com/hola/".
+
 ## Ultraligero
 El motor es muy ligero pesa 3.5 kb, es pensado para crear un portafolio o un landing page, que tenga url's amigables.
 
